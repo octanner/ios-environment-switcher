@@ -20,7 +20,7 @@
             </objects>
             <point key="canvasLocation" x="-10" y="403"/>
         </scene>
-        <!--Environment Switcher View Controller-->
+        <!--Choose Environment-->
         <scene sceneID="KOb-O8-Iy9">
             <objects>
                 <viewController id="Ku4-vN-3U4" customClass="EnvironmentSwitcherViewController" customModule="EnvironmentSwitcher" customModuleProvider="target" sceneMemberID="viewController">
@@ -72,7 +72,7 @@
                             <constraint firstItem="ndz-1O-jaM" firstAttribute="top" secondItem="tG0-3s-mcQ" secondAttribute="bottom" constant="16" id="wig-C7-vkc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="5dD-uf-nLm">
+                    <navigationItem key="navigationItem" title="Choose Environment" id="5dD-uf-nLm">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qUU-W7-tYb">
                             <connections>
                                 <action selector="cancelSwitch:" destination="Ku4-vN-3U4" id="Xsa-SJ-kfL"/>
