@@ -18,7 +18,6 @@ public struct Environment {
 }
 
 public protocol EnvironmentRepresentable {
-    var currentEnvironment: Environment { get set }
+    var currentEnvironment: Environment { get }
     var allEnvironments: [Environment] { get }
-    var customPath: String? { get set }
 }
