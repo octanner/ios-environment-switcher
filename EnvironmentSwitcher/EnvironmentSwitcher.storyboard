@@ -31,7 +31,46 @@
                     <view key="view" contentMode="scaleToFill" id="Hkz-Ol-ERC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ndz-1O-jaM">
+                                <rect key="frame" x="0.0" y="80" width="600" height="246"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUQ-UA-pNi">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Custom network path" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5XU-OL-IDn">
+                                                <rect key="frame" x="16" y="0.0" width="568" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Ku4-vN-3U4" id="tpp-Fa-IlR"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="5XU-OL-IDn" firstAttribute="leading" secondItem="AUQ-UA-pNi" secondAttribute="leading" constant="16" id="J0A-ix-zgW"/>
+                                            <constraint firstItem="5XU-OL-IDn" firstAttribute="top" secondItem="AUQ-UA-pNi" secondAttribute="top" id="NVu-fd-kWj"/>
+                                            <constraint firstAttribute="bottom" secondItem="5XU-OL-IDn" secondAttribute="bottom" id="Pia-eH-3lI"/>
+                                            <constraint firstAttribute="trailing" secondItem="5XU-OL-IDn" secondAttribute="trailing" constant="16" id="exf-cs-tHf"/>
+                                        </constraints>
+                                    </view>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKC-G8-euz">
+                                        <rect key="frame" x="0.0" y="30" width="600" height="216"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Ku4-vN-3U4" id="k2T-2r-INf"/>
+                                            <outlet property="delegate" destination="Ku4-vN-3U4" id="9gj-yq-0ce"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ndz-1O-jaM" firstAttribute="leading" secondItem="Hkz-Ol-ERC" secondAttribute="leading" id="D48-yH-3Gc"/>
+                            <constraint firstAttribute="trailing" secondItem="ndz-1O-jaM" secondAttribute="trailing" id="tKc-Rc-MXx"/>
+                            <constraint firstItem="ndz-1O-jaM" firstAttribute="top" secondItem="tG0-3s-mcQ" secondAttribute="bottom" constant="16" id="wig-C7-vkc"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5dD-uf-nLm">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qUU-W7-tYb">
@@ -45,6 +84,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="pathField" destination="5XU-OL-IDn" id="JG8-lq-QPF"/>
+                        <outlet property="picker" destination="mKC-G8-euz" id="kQf-na-hAn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rJx-cp-EwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

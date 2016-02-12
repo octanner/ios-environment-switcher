@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - Environment struct
+
 public struct Environment {
     public let name: String
     public let path: String?
@@ -16,6 +18,18 @@ public struct Environment {
         self.path = path
     }
 }
+
+
+// MARK: - Environment Equatable
+
+extension Environment: Equatable { }
+
+public func ==(lhs: Environment, rhs: Environment) -> Bool {
+    return lhs.name == rhs.name && lhs.path == rhs.path
+}
+
+
+// MARK: - EnvironmentRepresentable protocol
 
 public protocol EnvironmentRepresentable {
     var currentEnvironment: Environment { get }
