@@ -25,6 +25,12 @@ public class EnvironmentSwitcherViewController: UIViewController {
     
     @IBOutlet weak var pathField: UITextField!
     @IBOutlet weak var picker: UIPickerView!
+    var environments: [Environment]!
+    
+    
+    // MARK: - Constants
+    
+    private let customName = "Custom"
     
     
     // MARK: - Lifecycle overrides
@@ -33,8 +39,11 @@ public class EnvironmentSwitcherViewController: UIViewController {
         super.viewDidLoad()
         
         guard let appEnvironment = appEnvironment else { fatalError("Must have app environment") }
-        if let index = appEnvironment.allEnvironments.indexOf(appEnvironment.currentEnvironment) {
+        environments = appEnvironment.allEnvironments
+        if let index = environments.indexOf(appEnvironment.currentEnvironment) {
             picker.selectRow(index, inComponent: 0, animated: false)
+            pathField.text = appEnvironment.currentEnvironment.path
+            pathField.enabled = appEnvironment.currentEnvironment.name == customName
         }
     }
     
@@ -42,6 +51,7 @@ public class EnvironmentSwitcherViewController: UIViewController {
     // MARK: - Internal functions
     
     @IBAction func saveSwitch(sender: AnyObject) {
+        view.endEditing(true)
         saveUpdatedEnvironment()
     }
     
@@ -55,6 +65,14 @@ public class EnvironmentSwitcherViewController: UIViewController {
 // MARK: - Text field delegate
 
 extension EnvironmentSwitcherViewController: UITextFieldDelegate {
+    
+    public func textFieldDidEndEditing(textField: UITextField) {
+        let index = picker.selectedRowInComponent(0)
+        let custom = environments[index]
+        if custom.name != customName { return }
+        let updatedCustom = Environment(name: customName, path: textField.text)
+        environments[index] = updatedCustom
+    }
     
     public func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -70,9 +88,14 @@ extension EnvironmentSwitcherViewController: UITextFieldDelegate {
 extension EnvironmentSwitcherViewController: UIPickerViewDelegate {
     
     public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let appEnvironment = appEnvironment else { return nil }
-        let environment = appEnvironment.allEnvironments[row]
+        let environment = environments[row]
         return environment.name
+    }
+    
+    public func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let environment = environments[row]
+        pathField.text = environment.path
+        pathField.enabled = environment.name == customName
     }
     
 }
@@ -99,7 +122,7 @@ extension EnvironmentSwitcherViewController: UIPickerViewDataSource {
 private extension EnvironmentSwitcherViewController {
     
     func saveUpdatedEnvironment() {
-        let updatedEnvironment = Environment(name: "Staging", path: nil)
+        let updatedEnvironment = environments[picker.selectedRowInComponent(0)]
         delegate?.save(updatedEnvironment)
     }
     
