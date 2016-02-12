@@ -8,8 +8,16 @@
 
 import Foundation
 
+public struct Environment {
+    public let name: String
+    public let path: String?
+    public init(name: String, path: String?) {
+        self.name = name
+        self.path = path
+    }
+}
+
 public protocol EnvironmentRepresentable {
-    typealias Environment: RawRepresentable
     var currentEnvironment: Environment { get set }
     var allEnvironments: [Environment] { get }
     var customPath: String? { get set }
