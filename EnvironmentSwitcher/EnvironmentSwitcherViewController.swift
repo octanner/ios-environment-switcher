@@ -9,7 +9,8 @@
 import UIKit
 
 public protocol EnvironmentSwitcherDelegate {
-    func closeSwitcher()
+    func save(environment: Environment)
+    func cancelSwitcher()
 }
 
 public class EnvironmentSwitcherViewController: UIViewController {
@@ -23,11 +24,12 @@ public class EnvironmentSwitcherViewController: UIViewController {
     // MARK: - Internal functions
     
     @IBAction func saveSwitch(sender: AnyObject) {
-        delegate?.closeSwitcher()
+        let updatedEnvironment = Environment(name: "Staging", path: nil)
+        delegate?.save(updatedEnvironment)
     }
     
     @IBAction func cancelSwitch(sender: AnyObject) {
-        delegate?.closeSwitcher()
+        delegate?.cancelSwitcher()
     }
     
 }
