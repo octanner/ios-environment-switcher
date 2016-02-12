@@ -19,4 +19,15 @@ public class EnvironmentSwitcherViewController: UIViewController {
     public var delegate: EnvironmentSwitcherDelegate?
     public var appEnvironment: EnvironmentRepresentable?
 
+    
+    // MARK: - Internal functions
+    
+    @IBAction func saveSwitch(sender: AnyObject) {
+        delegate?.closeSwitcher()
+    }
+    
+    @IBAction func cancelSwitch(sender: AnyObject) {
+        delegate?.closeSwitcher()
+    }
+    
 }
