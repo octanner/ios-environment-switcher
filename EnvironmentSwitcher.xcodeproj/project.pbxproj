@@ -10,6 +10,8 @@
 		70E072F31C6E20FF00D24F0B /* EnvironmentSwitcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 70E072F21C6E20FF00D24F0B /* EnvironmentSwitcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		70E072FA1C6E20FF00D24F0B /* EnvironmentSwitcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E072EF1C6E20FF00D24F0B /* EnvironmentSwitcher.framework */; };
 		70E072FF1C6E20FF00D24F0B /* EnvironmentSwitcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E072FE1C6E20FF00D24F0B /* EnvironmentSwitcherTests.swift */; };
+		70E0730A1C6E2FDA00D24F0B /* EnvironmentSwitcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E073091C6E2FDA00D24F0B /* EnvironmentSwitcherViewController.swift */; };
+		70E0730C1C6E2FE600D24F0B /* EnvironmentSwitcher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70E0730B1C6E2FE600D24F0B /* EnvironmentSwitcher.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		70E072F91C6E20FF00D24F0B /* EnvironmentSwitcherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EnvironmentSwitcherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70E072FE1C6E20FF00D24F0B /* EnvironmentSwitcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSwitcherTests.swift; sourceTree = "<group>"; };
 		70E073001C6E20FF00D24F0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70E073091C6E2FDA00D24F0B /* EnvironmentSwitcherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentSwitcherViewController.swift; sourceTree = "<group>"; };
+		70E0730B1C6E2FE600D24F0B /* EnvironmentSwitcher.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EnvironmentSwitcher.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				70E072F21C6E20FF00D24F0B /* EnvironmentSwitcher.h */,
+				70E0730B1C6E2FE600D24F0B /* EnvironmentSwitcher.storyboard */,
+				70E073091C6E2FDA00D24F0B /* EnvironmentSwitcherViewController.swift */,
 				70E072F41C6E20FF00D24F0B /* Info.plist */,
 			);
 			path = EnvironmentSwitcher;
@@ -177,6 +183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70E0730C1C6E2FE600D24F0B /* EnvironmentSwitcher.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70E0730A1C6E2FDA00D24F0B /* EnvironmentSwitcherViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +317,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -320,6 +329,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.octanner.EnvironmentSwitcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -327,6 +337,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
