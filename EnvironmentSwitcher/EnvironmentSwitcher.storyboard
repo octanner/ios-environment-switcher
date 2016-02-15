@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10109" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pGV-z2-DMl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pGV-z2-DMl">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -32,13 +32,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ndz-1O-jaM">
-                                <rect key="frame" x="0.0" y="80" width="600" height="246"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ndz-1O-jaM">
+                                <rect key="frame" x="0.0" y="80" width="600" height="296"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUQ-UA-pNi">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Custom network path" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5XU-OL-IDn">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Custom API URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5XU-OL-IDn">
                                                 <rect key="frame" x="16" y="0.0" width="568" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
@@ -55,8 +55,28 @@
                                             <constraint firstAttribute="trailing" secondItem="5XU-OL-IDn" secondAttribute="trailing" constant="16" id="exf-cs-tHf"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rf4-7h-fmA">
+                                        <rect key="frame" x="0.0" y="40" width="600" height="30"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Custom token URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KnR-X8-qMC">
+                                                <rect key="frame" x="16" y="0.0" width="568" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Ku4-vN-3U4" id="65D-hd-GLu"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="KnR-X8-qMC" secondAttribute="bottom" id="C21-Fh-x0u"/>
+                                            <constraint firstItem="KnR-X8-qMC" firstAttribute="top" secondItem="rf4-7h-fmA" secondAttribute="top" id="TF1-mu-ZjA"/>
+                                            <constraint firstItem="KnR-X8-qMC" firstAttribute="leading" secondItem="rf4-7h-fmA" secondAttribute="leading" constant="16" id="VnK-Dl-nvX"/>
+                                            <constraint firstAttribute="trailing" secondItem="KnR-X8-qMC" secondAttribute="trailing" constant="16" id="nwf-wa-pas"/>
+                                        </constraints>
+                                    </view>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKC-G8-euz">
-                                        <rect key="frame" x="0.0" y="30" width="600" height="216"/>
+                                        <rect key="frame" x="0.0" y="80" width="600" height="216"/>
                                         <connections>
                                             <outlet property="dataSource" destination="Ku4-vN-3U4" id="k2T-2r-INf"/>
                                             <outlet property="delegate" destination="Ku4-vN-3U4" id="9gj-yq-0ce"/>
@@ -85,8 +105,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="pathField" destination="5XU-OL-IDn" id="JG8-lq-QPF"/>
+                        <outlet property="apiURLField" destination="5XU-OL-IDn" id="hDh-vz-J3O"/>
                         <outlet property="picker" destination="mKC-G8-euz" id="kQf-na-hAn"/>
+                        <outlet property="tokenURLField" destination="KnR-X8-qMC" id="mgd-Jk-hWZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rJx-cp-EwA" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -6,31 +6,27 @@
 //  Copyright © 2016 OC Tanner. All rights reserved.
 //
 
+import NetworkStack
 import UIKit
 
-public protocol EnvironmentSwitcherDelegate {
-    func save(environment: Environment)
-    func cancelSwitcher()
-}
 
 public class EnvironmentSwitcherViewController: UIViewController {
     
     // MARK: - Public properties
     
-    public var delegate: EnvironmentSwitcherDelegate?
-    public var appEnvironment: EnvironmentRepresentable?
+    public var environments = [AppNetworkState]()
 
     
     // MARK: - Internal properties
     
-    @IBOutlet weak var pathField: UITextField!
+    @IBOutlet weak var apiURLField: UITextField!
+    @IBOutlet weak var tokenURLField: UITextField!
     @IBOutlet weak var picker: UIPickerView!
-    var environments: [Environment]!
     
     
     // MARK: - Constants
     
-    private let customName = "Custom"
+    private let customName = "custom"
     
     
     // MARK: - Lifecycle overrides
@@ -38,12 +34,18 @@ public class EnvironmentSwitcherViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let appEnvironment = appEnvironment else { fatalError("Must have app environment") }
-        environments = appEnvironment.allEnvironments
-        if let index = environments.indexOf(appEnvironment.currentEnvironment) {
-            picker.selectRow(index, inComponent: 0, animated: false)
-            pathField.text = appEnvironment.currentEnvironment.path
-            pathField.enabled = appEnvironment.currentEnvironment.name == customName
+        guard let appEnvironment = AppNetworkState.currentAppState else { fatalError("Must have app environment") }
+
+        for (index, environment) in environments.enumerate() {
+            if appEnvironment.environmentKey == environment.environmentKey {
+                let custom = environment.environmentKey == customName
+                picker.selectRow(index, inComponent: 0, animated: false)
+                apiURLField.text = environment.apiURLString
+                apiURLField.enabled = custom
+                tokenURLField.text = environment.tokenEndpointURLString
+                tokenURLField.enabled = custom
+                break
+            }
         }
     }
     
@@ -56,7 +58,7 @@ public class EnvironmentSwitcherViewController: UIViewController {
     }
     
     @IBAction func cancelSwitch(sender: AnyObject) {
-        delegate?.cancelSwitcher()
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }
@@ -69,14 +71,17 @@ extension EnvironmentSwitcherViewController: UITextFieldDelegate {
     public func textFieldDidEndEditing(textField: UITextField) {
         let index = picker.selectedRowInComponent(0)
         let custom = environments[index]
-        if custom.name != customName { return }
-        let updatedCustom = Environment(name: customName, path: textField.text)
+        if custom.environmentKey != customName { return }
+        let updatedCustom = AppNetworkState(apiURLString: apiURLField.text!, tokenEndpointURLString: tokenURLField.text!, environmentKey: customName)
         environments[index] = updatedCustom
     }
     
     public func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        saveUpdatedEnvironment()
+        if textField == apiURLField {
+            tokenURLField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
         return true
     }
     
@@ -89,13 +94,16 @@ extension EnvironmentSwitcherViewController: UIPickerViewDelegate {
     
     public func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let environment = environments[row]
-        return environment.name
+        return environment.environmentKey
     }
     
     public func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let environment = environments[row]
-        pathField.text = environment.path
-        pathField.enabled = environment.name == customName
+        let custom = environment.environmentKey == customName
+        apiURLField.text = environment.apiURLString
+        apiURLField.enabled = custom
+        tokenURLField.text = environment.tokenEndpointURLString
+        tokenURLField.enabled = custom
     }
     
 }
@@ -110,8 +118,7 @@ extension EnvironmentSwitcherViewController: UIPickerViewDataSource {
     }
     
     public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        guard let appEnvironment = appEnvironment else { return 0 }
-        return appEnvironment.allEnvironments.count
+        return environments.count
     }
     
 }
@@ -123,7 +130,7 @@ private extension EnvironmentSwitcherViewController {
     
     func saveUpdatedEnvironment() {
         let updatedEnvironment = environments[picker.selectedRowInComponent(0)]
-        delegate?.save(updatedEnvironment)
+        AppNetworkState.currentAppState = updatedEnvironment
     }
     
 }
