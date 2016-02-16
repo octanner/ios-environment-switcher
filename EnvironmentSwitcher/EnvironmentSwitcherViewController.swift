@@ -6,8 +6,8 @@
 //  Copyright © 2016 OC Tanner. All rights reserved.
 //
 
-import NetworkStack
 import UIKit
+import NetworkStack
 
 public protocol EnvironmentSwitcherDelegate {
     func closeEnvironmentSwitcher(appNetworkStateChanged: Bool)
