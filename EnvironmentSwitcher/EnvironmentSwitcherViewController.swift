@@ -54,11 +54,13 @@ public class EnvironmentSwitcherViewController: UIViewController {
     
     @IBAction func saveSwitch(sender: AnyObject) {
         view.endEditing(true)
-        saveUpdatedEnvironment()
+        let updatedEnvironment = environments[picker.selectedRowInComponent(0)]
+        AppNetworkState.currentAppState = updatedEnvironment
+        closeSwitcher()
     }
     
     @IBAction func cancelSwitch(sender: AnyObject) {
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        closeSwitcher()
     }
     
 }
@@ -128,9 +130,8 @@ extension EnvironmentSwitcherViewController: UIPickerViewDataSource {
 
 private extension EnvironmentSwitcherViewController {
     
-    func saveUpdatedEnvironment() {
-        let updatedEnvironment = environments[picker.selectedRowInComponent(0)]
-        AppNetworkState.currentAppState = updatedEnvironment
+    func closeSwitcher() {
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }
