@@ -34,7 +34,7 @@
 		70E073001C6E20FF00D24F0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70E073091C6E2FDA00D24F0B /* EnvironmentSwitcherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentSwitcherViewController.swift; sourceTree = "<group>"; };
 		70E0730B1C6E2FE600D24F0B /* EnvironmentSwitcher.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EnvironmentSwitcher.storyboard; sourceTree = "<group>"; };
-		B08AE0161C7255D400F1ECB8 /* NetworkStack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkStack.framework; path = "../../ios-network-stack/build/Debug-iphoneos/NetworkStack.framework"; sourceTree = "<group>"; };
+		B08AE0161C7255D400F1ECB8 /* NetworkStack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NetworkStack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

@@ -1,0 +1,9 @@
+[submodule "Carthage/Checkouts/JaSON"]
+	path = Carthage/Checkouts/JaSON
+	url = https://github.com/bwhiteley/JaSON.git
+[submodule "Carthage/Checkouts/SimpleKeychain"]
+	path = Carthage/Checkouts/SimpleKeychain
+	url = https://github.com/octanner/SimpleKeychain.git
+[submodule "Carthage/Checkouts/ios-network-stack"]
+	path = Carthage/Checkouts/ios-network-stack
+	url = https://github.com/octanner/ios-network-stack.git

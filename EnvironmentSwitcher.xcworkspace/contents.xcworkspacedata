@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:EnvironmentSwitcher.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/ios-network-stack/NetworkStack.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/JaSON/JaSON.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/SimpleKeychain/SimpleKeychain.xcodeproj">
+   </FileRef>
+</Workspace>
