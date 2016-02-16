@@ -23,7 +23,7 @@
         <!--Choose Environment-->
         <scene sceneID="KOb-O8-Iy9">
             <objects>
-                <viewController id="Ku4-vN-3U4" customClass="EnvironmentSwitcherViewController" customModule="EnvironmentSwitcher" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnvironmentSwitcherViewController" id="Ku4-vN-3U4" customClass="EnvironmentSwitcherViewController" customModule="EnvironmentSwitcher" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tG0-3s-mcQ"/>
                         <viewControllerLayoutGuide type="bottom" id="seO-rq-uy2"/>
