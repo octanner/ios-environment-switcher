@@ -9,11 +9,15 @@
 import NetworkStack
 import UIKit
 
+public protocol EnvironmentSwitcherDelegate {
+    func closeEnvironmentSwitcher(appNetworkStateChanged: Bool)
+}
 
 public class EnvironmentSwitcherViewController: UIViewController {
     
     // MARK: - Public properties
     
+    public var delegate: EnvironmentSwitcherDelegate?
     public var environments = [AppNetworkState]()
 
     
@@ -56,11 +60,11 @@ public class EnvironmentSwitcherViewController: UIViewController {
         view.endEditing(true)
         let updatedEnvironment = environments[picker.selectedRowInComponent(0)]
         AppNetworkState.currentAppState = updatedEnvironment
-        closeSwitcher()
+        delegate?.closeEnvironmentSwitcher(true)
     }
     
     @IBAction func cancelSwitch(sender: AnyObject) {
-        closeSwitcher()
+        delegate?.closeEnvironmentSwitcher(false)
     }
     
 }
@@ -121,17 +125,6 @@ extension EnvironmentSwitcherViewController: UIPickerViewDataSource {
     
     public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return environments.count
-    }
-    
-}
-
-
-// MARK: - Private functions
-
-private extension EnvironmentSwitcherViewController {
-    
-    func closeSwitcher() {
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }
